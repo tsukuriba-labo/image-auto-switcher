@@ -1,0 +1,37 @@
+div#main-view {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+}
+
+div#title {
+  /* position: absolute; */
+  font-size: 24em;
+  color: chartreuse;
+  z-index: 2;
+}
+
+div#tile {
+}
+
+img {
+  vertical-align: bottom;
+  /* max-width: 100%; */
+}
+
+section#first {
+  /* height: 70vh; */
+}
+section#second {
+  background-color: antiquewhite;
+  position: relative;
+  height: 60vh;
+}
+
+section#third {
+  background-color: wheat;
+  position: relative;
+  height: 60vh;
+}

@@ -1,0 +1,63 @@
+/* ======================================
+Responsive Image gallery Style rules
+======================================*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  /* padding: 40px 5%; */
+}
+
+.heading-text {
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+.heading-text span {
+  font-weight: 100;
+}
+
+/* Responsive image gallery rules begin*/
+
+.image-gallery {
+  /* Mobile first */
+  display: flex;
+  flex-direction: column;
+}
+
+.image-gallery .column {
+  display: flex;
+  flex-direction: column;
+}
+
+.image-item img {
+  width: 100%;
+  /* border-radius: 5px; */
+  /* height: 100%; */
+  /* object-fit: cover; */
+  pointer-events: none;
+  position: absolute;
+}
+
+@media only screen and (min-width: 768px) {
+  .image-gallery {
+    flex-direction: row;
+    position: absolute;
+    top: 0;
+  }
+}
+
+/* overlay styles */
+
+.image-item {
+  height: 500px;
+  width: 800px;
+  position: relative;
+}
