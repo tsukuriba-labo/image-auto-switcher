@@ -1,9 +1,9 @@
-div#main-view {
+div#container {
   position: relative;
-  /* display: flex;
+  display: flex;
   justify-content: center;
-  align-items: center; */
-  height: 70vh;
+  align-items: center;
+  height: 100%;
 }
 
 div#title {
@@ -19,16 +19,16 @@ img {
 }
 
 section#first {
-  /* height: 70vh; */
+  height: 50vh;
 }
 section#second {
   background-color: antiquewhite;
   position: relative;
-  height: 60vh;
+  height: 50vh;
 }
 
 section#third {
   background-color: wheat;
   position: relative;
-  height: 60vh;
+  height: 50vh;
 }

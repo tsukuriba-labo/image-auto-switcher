@@ -1,20 +1,26 @@
 $(document).ready(function () {
-  //   $("div.image-gallery").animate({ top: "-34vh" }, 100000);
+  $("div.image-gallery").animate({ top: "-34vh" }, 100000);
 
   $(".image-item img:nth-child(n+2)").hide();
 
-  $(".image-item img:first-child").each(function (index, elem) {
-    var interval = randomIntFromInterval(300, 1000) * 20;
-    setInterval(function () {
-      var _elem = $(".image-item img:first-child").eq(index);
+  $(".image-item[data-group^='w-'] img:first-child").each(function (
+    index,
+    elem
+  ) {
+    var interval_w = 5000;
+    var _elem = $(".image-item[data-group^='w-'] img:first-child").eq(index);
+    var wg = $(_elem).parent().attr("data-group");
+
+    var num = wg.split("-")[1];
+
+    setTimeout(function () {
       $(_elem).fadeOut(2000);
       $(_elem).next().fadeIn(2000);
       $(_elem).appendTo($(_elem).parent().get(0));
-    }, interval);
+
+      if (num == "3") {
+        $("div.image-gallery").stop();
+      }
+    }, interval_w * num);
   });
 });
-
-function randomIntFromInterval(min, max) {
-  // min and max included
-  return Math.floor(Math.random() * (max - min + 1) + min);
-}

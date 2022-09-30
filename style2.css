@@ -1,6 +1,3 @@
-/* ======================================
-Responsive Image gallery Style rules
-======================================*/
 * {
   margin: 0;
   padding: 0;
@@ -9,10 +6,6 @@ Responsive Image gallery Style rules
 
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.container {
-  /* padding: 40px 5%; */
 }
 
 .heading-text {
@@ -24,28 +17,24 @@ body {
   font-weight: 100;
 }
 
-/* Responsive image gallery rules begin*/
-
 .image-gallery {
-  /* Mobile first */
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 70vh;
+  height: 300vh;
+  position: absolute;
 }
 
 .image-gallery .column {
   display: flex;
   flex-direction: column;
   width: 100%;
+  flex: 1;
 }
 
 .image-item img {
   width: 100%;
   height: 100%;
-  /* border-radius: 5px; */
-  /* height: 100%; */
-  /* object-fit: cover; */
   pointer-events: none;
   position: absolute;
 }
@@ -53,16 +42,12 @@ body {
 @media only screen and (min-width: 768px) {
   .image-gallery {
     flex-direction: row;
-    /* position: absolute; */
+    height: 70vh;
     top: 0;
   }
 }
 
-/* overlay styles */
-
 .image-item {
-  /* height: 500px;
-  width: 800px; */
   position: relative;
   flex: 1;
 }
