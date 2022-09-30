@@ -1,8 +1,8 @@
 div#main-view {
   position: relative;
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
   height: 70vh;
 }
 
@@ -11,9 +11,6 @@ div#title {
   font-size: 24em;
   color: chartreuse;
   z-index: 2;
-}
-
-div#tile {
 }
 
 img {
