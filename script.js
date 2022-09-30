@@ -1,3 +1,8 @@
+/**
+ * 画像スイッチ付きのスクロールをセットアップ
+ *
+ * @param {*} imageGroups
+ */
 function setImageScroll(imageGroups) {
   $(document).ready(function () {
     // 画像スクロール
@@ -32,6 +37,9 @@ function setImageScroll(imageGroups) {
   });
 }
 
+// 画像スイッチ付きのスクロールをセットアップ
+// w-1, w-2, w-3,... のグループは5秒間隔で順に切り替わります。
+// h-1, h-2, h-3,... のグループは10秒間隔で順に切り替わります。
 setImageScroll([
   { group: "w", interval: 5000 },
   { group: "h", interval: 10000 },
