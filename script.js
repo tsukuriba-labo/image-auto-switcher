@@ -6,7 +6,7 @@
 function setImageScroll(imageGroups) {
   $(document).ready(function () {
     // 画像スクロール
-    $("div.image-gallery").animate({ top: "-34vh" }, 100000);
+    $("div.image-gallery").animate({ top: "-34vh" }, 50000);
 
     // 二枚目以降の画像を非表示
     $(".image-item img:nth-child(n+2)").hide();
