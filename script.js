@@ -14,25 +14,28 @@ function setImageScroll(imageGroups) {
     let count = 0;
 
     imageGroups.forEach(function (v, index) {
-      $(
-        ".image-item[data-group^='" + v.group + "-" + "'] img:first-child"
-      ).each(function (index, elem) {
-        var wg = $(elem).parent().attr("data-group");
-        var num = wg.split("-")[1];
+      $(".image-item[data-group^='" + v.group + "-" + "']").each(
+        (index, elem) => {
+          var wg = $(elem).attr("data-group");
+          var num = wg.split("-")[1];
 
-        var myCount = count;
+          var myCount = count;
 
-        setTimeout(function () {
-          $(elem).fadeOut(2000);
-          $(elem).next().fadeIn(2000);
-          if (myCount == count - 1) {
-            $("div.image-gallery").stop();
-          }
-        }, v.interval * num);
+          setInterval(() => {
+            var img = $(elem).children(" img:first-child")[0];
+            $(img).fadeOut(2000);
+            $(img).next().fadeIn(2000);
+            $(img).appendTo($(elem));
 
-        // 合計カウント
-        count++;
-      });
+            if (myCount == count - 1) {
+              $("div.image-gallery").stop();
+            }
+          }, v.interval * num);
+
+          // 合計カウント
+          count++;
+        }
+      );
     });
   });
 }
