@@ -5,13 +5,46 @@
  */
 function setImageScroll(imageGroups) {
   $(document).ready(function () {
+    const duration = 50000;
+
     // 画像スクロール
-    $("div.image-gallery").animate({ top: "-34vh" }, 50000);
+    var imggl1 = $(".image-gallery").eq(0);
+    imggl1.animate({ top: -1 * imggl1.height() - 10 }, duration, "linear");
 
     // 二枚目以降の画像を非表示
     $(".image-item img:nth-child(n+2)").hide();
 
-    let count = 0;
+    // イメージギャラリーを下にコピー
+    $(".image-gallery").clone(true).appendTo("div#container");
+    var imggl2 = $(".image-gallery").eq(1);
+
+    imggl2.css({ top: imggl1.position().top + imggl1.outerHeight(true) - 15 });
+    imggl2.animate({ top: -10 }, duration, "linear");
+
+    setInterval(() => {
+      var _imggl1 = $(".image-gallery").eq(0);
+      var _imggl2 = $(".image-gallery").eq(1);
+      var bottom = _imggl1.position().top + _imggl1.outerHeight(true);
+
+      if (bottom < 0) {
+        _imggl1.appendTo("div#container");
+        _imggl1 = $(".image-gallery").eq(0);
+        _imggl2 = $(".image-gallery").eq(1);
+
+        _imggl1.stop(false, false);
+        _imggl1.animate(
+          { top: -1 * _imggl1.height() - 10 },
+          duration,
+          "linear"
+        );
+
+        _imggl2.stop(false, false);
+        _imggl2.css({
+          top: _imggl1.position().top + _imggl1.outerHeight(true) - 8,
+        });
+        _imggl2.animate({ top: -10 }, duration, "linear");
+      }
+    }, 2000);
 
     imageGroups.forEach(function (v, index) {
       $(".image-item[data-group^='" + v.group + "-" + "']").each(
@@ -19,27 +52,20 @@ function setImageScroll(imageGroups) {
           var wg = $(elem).attr("data-group");
           var num = wg.split("-")[1];
 
-          var myCount = count;
-
           setInterval(() => {
-            var img = $(elem).children(" img:first-child")[0];
-            $(img).fadeOut(2000);
-            $(img).next().fadeIn(2000);
-            $(img).appendTo($(elem));
-
-            if (myCount == count - 1) {
-              $("div.image-gallery").stop();
+            var imgs = $(elem).children();
+            if (imgs.length > 1) {
+              var img = $(elem).children(" img:first-child")[0];
+              $(img).fadeOut(2000);
+              $(img).next().fadeIn(2000);
+              $(img).appendTo($(elem));
             }
           }, v.interval * num);
-
-          // 合計カウント
-          count++;
         }
       );
     });
   });
 }
-
 // 画像スイッチ付きのスクロールをセットアップ
 // w-1, w-2, w-3,... のグループは5秒間隔で順に切り替わります。
 // h-1, h-2, h-3,... のグループは10秒間隔で順に切り替わります。
