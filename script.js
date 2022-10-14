@@ -5,19 +5,19 @@
  */
 function setImageScroll(imageGroups) {
   $(document).ready(function () {
+    // $("html,body").animate({ scrollTop: 0 }, 1);
     const duration = 50000;
+    $(".image-gallery").clone(true).appendTo("div#container");
 
     // 画像スクロール
     var imggl1 = $(".image-gallery").eq(0);
+    var imggl2 = $(".image-gallery").eq(1);
     imggl1.animate({ top: -1 * imggl1.height() - 10 }, duration, "linear");
 
     // 二枚目以降の画像を非表示
     $(".image-item img:nth-child(n+2)").hide();
 
     // イメージギャラリーを下にコピー
-    $(".image-gallery").clone(true).appendTo("div#container");
-    var imggl2 = $(".image-gallery").eq(1);
-
     imggl2.css({ top: imggl1.position().top + imggl1.outerHeight(true) - 15 });
     imggl2.animate({ top: -10 }, duration, "linear");
 
@@ -40,7 +40,7 @@ function setImageScroll(imageGroups) {
 
         _imggl2.stop(false, false);
         _imggl2.css({
-          top: _imggl1.position().top + _imggl1.outerHeight(true) - 8,
+          top: _imggl1.position().top + _imggl1.outerHeight(true) - 15,
         });
         _imggl2.animate({ top: -10 }, duration, "linear");
       }
